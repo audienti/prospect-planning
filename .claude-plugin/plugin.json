@@ -1,0 +1,11 @@
+{
+  "name": "prospect-planning",
+  "version": "0.2.0",
+  "description": "Choose a grounded next action aligned with an experiment approach.",
+  "author": {
+    "name": "Audienti"
+  },
+  "skills": "./skills/",
+  "homepage": "https://github.com/audienti/prospect-planning",
+  "repository": "https://github.com/audienti/prospect-planning"
+}

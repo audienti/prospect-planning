@@ -1,0 +1,172 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9_-]{0,99}$"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 8000
+    },
+    "premise": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 8000
+    },
+    "approach": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 8000
+    },
+    "audience": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 8000
+    },
+    "roles": {
+      "minItems": 1,
+      "maxItems": 20,
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 8000
+      }
+    },
+    "mode": {
+      "type": "string",
+      "enum": [
+        "validating",
+        "gifting"
+      ]
+    },
+    "policy": {
+      "type": "object",
+      "properties": {
+        "timezone": {
+          "type": "string"
+        },
+        "businessStart": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 23
+        },
+        "businessEnd": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 24
+        },
+        "minHoursBetweenTouches": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 720
+        },
+        "replyWaitHours": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 720
+        },
+        "maxTouches": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 100
+        },
+        "reviewAfterHours": {
+          "type": "number",
+          "minimum": 1,
+          "maximum": 168
+        }
+      },
+      "required": [
+        "timezone",
+        "businessStart",
+        "businessEnd",
+        "minHoursBetweenTouches",
+        "replyWaitHours",
+        "maxTouches",
+        "reviewAfterHours"
+      ],
+      "additionalProperties": false
+    },
+    "strategyForApproach": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 8000
+    },
+    "stages": {
+      "minItems": 1,
+      "maxItems": 20,
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z0-9_-]+$"
+          },
+          "title": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 8000
+          },
+          "instruction": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 8000
+          },
+          "channels": {
+            "minItems": 1,
+            "maxItems": 4,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "public",
+                "email",
+                "phone",
+                "linkedin"
+              ]
+            }
+          },
+          "optional": {
+            "default": false,
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "id",
+          "title",
+          "instruction",
+          "channels",
+          "optional"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "stopRule": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 8000
+    },
+    "sourcePath": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "id",
+    "name",
+    "premise",
+    "approach",
+    "audience",
+    "roles",
+    "mode",
+    "policy",
+    "strategyForApproach",
+    "stages",
+    "stopRule"
+  ],
+  "additionalProperties": false
+}
